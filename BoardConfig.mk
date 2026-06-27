@@ -15,7 +15,7 @@
 #
 
 # Device path
-LOCAL_PATH := device/infinix/x603
+LOCAL_PATH := device/lenovo/brady
 MTK_PROJECT_CONFIG ?= $(LOCAL_PATH)/ProjectConfig.mk
 
 # Device board elements
@@ -23,7 +23,10 @@ include $(LOCAL_PATH)/PlatformConfig.mk
 include $(LOCAL_PATH)/board/*.mk
 
 # Device vendor board
--include vendor/infinix/x603/BoardConfigVendor.mk
+-include vendor/lenovo/brady/BoardConfigVendor.mk
+
+# Device-specific policy directories
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
 #######################################################################
 

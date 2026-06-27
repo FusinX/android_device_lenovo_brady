@@ -3,6 +3,16 @@
 #
 
 ADDITIONAL_BUILD_PROPERTIES += \
+    ro.product.model=Lenovo K8 \
+    ro.product.brand=Lenovo \
+    ro.product.name=brady \
+    ro.product.device=brady \
+    ro.product.manufacturer=LENOVO \
+    ro.board.platform=mt6757 \
+    ro.build.product=brady \
+    ro.build.version.release=7.1.1 \
+    ro.build.version.sdk=25 \
+    ro.build.version.incremental=41 \
     ro.carrier=unknown \
     ro.mediatek.chip_ver=S01 \
     ro.mediatek.platform=MT6757 \
@@ -31,7 +41,7 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.frp.pst=/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/frp \
     ro.mtk_protocol1_rat_config=C/Lf/Lt/W/T/G \
     ro.mediatek.version.branch=alps-mp-n0.mp5 \
-    ro.mediatek.version.release=X603-H575A-N-IN-180420V205 \
+    ro.mediatek.version.release=brady-k8 \
     ro.mediatek.version.sdk=4 \
     ro.num_md_protocol=2 \
     persist.radio.multisim.config=dsds \
@@ -117,7 +127,7 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.mtk_vilte_ut_support=0 \
     wfd.dummy.enable=1 \
     wfd.iframesize.level=0 \
-    ro.mediatek.project.path=device/reallytek/rlk6757_66_n \
+    ro.mediatek.project.path=device/lenovo/brady \
     persist.mtk.wcn.combo.chipid=-1 \
     persist.mtk.wcn.patch.version=-1 \
     persist.mtk.wcn.dynamic.dump=0 \

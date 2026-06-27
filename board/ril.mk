@@ -1,2 +1,2 @@
 # RIL
-BOARD_RIL_CLASS := ../../../device/infinix/x603/ril
+BOARD_RIL_CLASS := $(LOCAL_PATH)/ril

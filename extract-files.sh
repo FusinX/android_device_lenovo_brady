@@ -1,7 +1,7 @@
 #!/bin/bash
 
-VENDOR=infinix
-DEVICE=x603
+VENDOR=lenovo
+DEVICE=brady
 
 BASE=../../../vendor/$VENDOR/$DEVICE
 

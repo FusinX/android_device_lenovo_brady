@@ -21,7 +21,7 @@
 # function: add_lunch_combo generic-eng
 
 for var in eng user userdebug; do
-  add_lunch_combo lineage_x603-$var
+  add_lunch_combo lineage_brady-$var
 done
 
 #Ship with root access

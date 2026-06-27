@@ -41,12 +41,12 @@ static struct light_state_t g_notification;
 
 static int g_backlight = 255;
 
-/* INFINIX LED */
-char const *const INFINIX_LED_FILE = "/sys/class/leds/button-backlight/brightness";
-char const *const INFINIX_TRIGGER_FILE = "/sys/class/leds/button-backlight/trigger";
+/* button LED */
+char const *const BRADY_LED_FILE = "/sys/class/leds/button-backlight/brightness";
+char const *const BRADY_TRIGGER_FILE = "/sys/class/leds/button-backlight/trigger";
 
-char const *const INFINIX_DELAY_ON_FILE = "/sys/class/leds/button-backlight/delay_on";
-char const *const INFINIX_DELAY_OFF_FILE = "/sys/class/leds/button-backlight/delay_off";
+char const *const BRADY_DELAY_ON_FILE = "/sys/class/leds/button-backlight/delay_on";
+char const *const BRADY_DELAY_OFF_FILE = "/sys/class/leds/button-backlight/delay_off";
 
 /* Red LED */
 char const*const RED_LED_FILE
@@ -136,7 +136,7 @@ static int is_lit(struct light_state_t const *state)
     return state->color & 0x00ffffff;
 }
 
-static int INFINIX_blink(int level, int onMS, int offMS)
+static int BRADY_blink(int level, int onMS, int offMS)
 {
 	static int preStatus; /* 0: off, 1: blink, 2: no blink */
 	int nowStatus;
@@ -153,18 +153,18 @@ static int INFINIX_blink(int level, int onMS, int offMS)
 		return -1;
 
 	if (nowStatus == 0)
-		write_int(INFINIX_LED_FILE, 0);
+		write_int(BRADY_LED_FILE, 0);
 	else if (nowStatus == 1) {
-		write_str(INFINIX_TRIGGER_FILE, "timer");
-		while (((access(INFINIX_DELAY_OFF_FILE, F_OK) == -1) ||
-			(access(INFINIX_DELAY_OFF_FILE, R_OK|W_OK) == -1)) && i < 10) {
+		write_str(BRADY_TRIGGER_FILE, "timer");
+		while (((access(BRADY_DELAY_OFF_FILE, F_OK) == -1) ||
+			(access(BRADY_DELAY_OFF_FILE, R_OK|W_OK) == -1)) && i < 10) {
 			i++;
 		}
-		write_int(INFINIX_DELAY_OFF_FILE, offMS);
-		write_int(INFINIX_DELAY_ON_FILE, onMS);
+		write_int(BRADY_DELAY_OFF_FILE, offMS);
+		write_int(BRADY_DELAY_ON_FILE, onMS);
 	} else {
-		write_str(INFINIX_TRIGGER_FILE, "none");
-		write_int(INFINIX_LED_FILE, 255); /* default full brightness */
+		write_str(BRADY_TRIGGER_FILE, "none");
+		write_int(BRADY_LED_FILE, 255); /* default full brightness */
 	}
 	preStatus = nowStatus;
 	return 0;
@@ -224,11 +224,11 @@ static int set_speaker_light_locked(struct light_device_t *dev,
     }
 
     if (red)
-	   INFINIX_blink(red, onMS, offMS);
+	   BRADY_blink(red, onMS, offMS);
     else if (green)
-	INFINIX_blink(green, onMS, offMS);
+	BRADY_blink(green, onMS, offMS);
     else
-	INFINIX_blink(0, 0, 0);
+	BRADY_blink(0, 0, 0);
 
     return 0;
 }
@@ -332,7 +332,7 @@ struct hw_module_t HAL_MODULE_INFO_SYM = {
     .version_major = 1,
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
-    .name = "INFINIX Lights Module",
+    .name = "Brady Lights Module",
     .author = "MediaTek",
 	.methods = &lights_module_methods,
 };
